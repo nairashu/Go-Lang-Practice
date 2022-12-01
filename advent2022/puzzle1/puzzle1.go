@@ -1,4 +1,4 @@
-package Advent2022
+package advent2022
 
 import (
 	"bufio"

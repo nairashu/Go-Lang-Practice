@@ -1,9 +1,11 @@
 package main
 
-import {
+import (
 	"fmt"
-}
+)
 
 func main() {
-	fmt.Println("Hello")
+	fmt.Println("Hello World")
+	helloWorld.HelloWorld()
+	advent2022.RunPuzzle1()
 }
