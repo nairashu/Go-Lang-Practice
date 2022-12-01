@@ -1,11 +1,11 @@
-package main
+package loops
 
 import (
 	"fmt"
 	"time"
 )
 
-func main() {
+func runLoops() {
 
 	for timer := 10; timer >= 0; timer-- {
 		fmt.Println(timer)

@@ -1,11 +1,11 @@
-package main
+package functions
 
 import (
 	"fmt"
 	"strings"
 )
 
-func main() {
+func runFunctions() {
 	name := "ashish nair"
 	course := "kubernetes with go lang"
 

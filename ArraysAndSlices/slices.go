@@ -1,10 +1,10 @@
-package main
+package arraysandslices
 
 import (
 	"fmt"
 )
 
-func main() {
+func runArraysAndSlices() {
 	fmt.Println("Working with slices")
 
 	courses := make([]string, 5, 10)

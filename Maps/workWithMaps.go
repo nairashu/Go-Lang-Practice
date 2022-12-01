@@ -1,10 +1,10 @@
-package main
+package maps
 
 import (
 	"fmt"
 )
 
-func main() {
+func RunMaps() {
 	fmt.Println("Working with Maps")
 
 	leagueTitles := make(map[string]int)

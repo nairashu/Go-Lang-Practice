@@ -1,4 +1,4 @@
-package main
+package variables
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ var (
 	rollNo = "24" //Needs to be an integer
 )
 
-func main() {
+func runVarFramework() {
 	fmt.Println("Name and Course are", name, " and ", course)
 	fmt.Println("Module and Clip are", module, " and ", clip)
 

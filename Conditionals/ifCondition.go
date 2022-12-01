@@ -1,11 +1,11 @@
-package main
+package conditionals
 
 import (
 	"fmt"
 	"os"
 )
 
-func main() {
+func runIfConditionals() {
 	dockerCourseLength := 235
 	kubernetesCourseLength := 30
 

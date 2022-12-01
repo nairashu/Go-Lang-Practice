@@ -1,11 +1,11 @@
-package main
+package variables
 
 import (
 	"fmt"
 	"os"
 )
 
-func main() {
+func runConstAndEnvVariable() {
 	const c = 300000
 	fmt.Println("Speed of light is ", c, " km/s")
 

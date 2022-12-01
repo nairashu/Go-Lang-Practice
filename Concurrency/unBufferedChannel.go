@@ -1,4 +1,4 @@
-package main
+package concurrency
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func runUnbufferedChannel() {
 	fmt.Println("Working with Concurrency")
 
 	var waitGroup sync.WaitGroup

@@ -1,4 +1,4 @@
-package main
+package conditionals
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func runSwitchConditionals() {
 
 	switch "Kubernetes" {
 	case "kubernetes":

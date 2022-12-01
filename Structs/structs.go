@@ -1,10 +1,10 @@
-package main
+package structs
 
 import (
 	"fmt"
 )
 
-func main() {
+func runStructs() {
 	fmt.Println("Working with Structs")
 
 	type footballClub struct {
