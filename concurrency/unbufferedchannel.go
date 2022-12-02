@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func runUnbufferedChannel() {
+func RunUnbufferedChannel() {
 	fmt.Println("Working with Concurrency")
 
 	var waitGroup sync.WaitGroup

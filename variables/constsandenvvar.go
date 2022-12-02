@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func runConstAndEnvVariable() {
+func RunConstAndEnvVariable() {
 	const c = 300000
 	fmt.Println("Speed of light is ", c, " km/s")
 

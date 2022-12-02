@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func runFunctions() {
+func RunFunctions() {
 	name := "ashish nair"
 	course := "kubernetes with go lang"
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func runStructs() {
+func RunStructs() {
 	fmt.Println("Working with Structs")
 
 	type footballClub struct {

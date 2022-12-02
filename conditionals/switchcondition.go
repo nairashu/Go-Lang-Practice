@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func runSwitchConditionals() {
+func RunSwitchConditionals() {
 
 	switch "Kubernetes" {
 	case "kubernetes":

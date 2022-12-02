@@ -6,31 +6,32 @@ import (
 	"time"
 )
 
-func runBufferedChannel() {
+func RunConcurrency() {
+
+	func() {
+		time.Sleep(5 * time.Second)
+		fmt.Println("Hello")
+	}()
+
+	func() {
+		fmt.Println("Ashish")
+	}()
 
 	fmt.Println("Working with Concurrency")
 
 	var waitGroup sync.WaitGroup
 	waitGroup.Add(2)
 
-	fmt.Println("Working with Buffered channel")
-	buffChan := make(chan string, 5)
-	buffChan <- "Ashish"
-
 	go func() {
 		defer waitGroup.Done()
 		time.Sleep(5 * time.Second)
 		fmt.Println("Hello")
-		buffChan <- "Tyler"
 	}()
 
 	go func() {
 		defer waitGroup.Done()
-		name := <-buffChan
-		fmt.Println(name)
+		fmt.Println("Ashish")
 	}()
 
 	waitGroup.Wait()
-	pendingName := <-buffChan
-	fmt.Println("Name left in the Buffered channel ia ", pendingName)
 }

@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func runLoops() {
+func RunLoops() {
 
 	for timer := 10; timer >= 0; timer-- {
 		fmt.Println(timer)

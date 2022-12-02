@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func runArraysAndSlices() {
+func RunArraysAndSlices() {
 	fmt.Println("Working with slices")
 
 	courses := make([]string, 5, 10)

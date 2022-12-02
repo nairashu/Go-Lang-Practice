@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func runIfConditionals() {
+func RunIfConditionals() {
 	dockerCourseLength := 235
 	kubernetesCourseLength := 30
 
