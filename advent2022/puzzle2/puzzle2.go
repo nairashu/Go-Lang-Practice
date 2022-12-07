@@ -2,14 +2,10 @@ package puzzle2
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
-	"sort"
 	"strings"
 )
-
-var scoreByStrategy := make(map[string]int)
 
 func RunPuzzle2() {
 	// open input file
@@ -23,64 +19,125 @@ func RunPuzzle2() {
 
 	// read the file line by line using scanner
 	scanLine := bufio.NewScanner(f)
+	scoreByStrategyLDW := make(map[string]int)
+	scoreByStrategyRPS := make(map[string]int)
 
-	
-	totalScore := 0
-	
-	// Parse the file to scan each line and get the score for each row
+	totalScoreLDW := 0
+	totalScoreRPS := 0
+
 	for scanLine.Scan() {
 		strategy := scanLine.Text()
-		score, ok := scoreByStrategy[strategy]
+		scoreLDW, ok := scoreByStrategyLDW[strategy]
+		scoreRPS, ok := scoreByStrategyRPS[strategy]
+		str := strings.Split(strategy, " ")
+		log.Println("Opponent Played: ", str[0], " Your strategy play is: ", str[1])
 		if ok {
-			totalScore = totalScore + score
+			totalScoreLDW = totalScoreLDW + scoreLDW
+			totalScoreRPS = totalScoreRPS + scoreRPS
+			log.Println("ScoreLDW is: ", scoreLDW, " TotalLDW: ", totalScoreLDW, " ScoreRPS: ", scoreRPS, " TotalRPS: ", totalScoreRPS)
 		} else {
-			calculateScoreForStrategy(strategy)
+			calculateScoreForStrategyWhereSecondColumnIsLDW(strategy, scoreByStrategyLDW)
+			calculateScoreForStrategyWhereSecondColumnIsRPS(strategy, scoreByStrategyRPS)
+			newScoreLDW := scoreByStrategyLDW[strategy]
+			totalScoreLDW = totalScoreLDW + newScoreLDW
+			newScoreRPS := scoreByStrategyRPS[strategy]
+			totalScoreRPS = totalScoreRPS + newScoreRPS
+			log.Println("NewScoreLDW is: ", newScoreLDW, " TotalLDW: ", totalScoreLDW, " NewScoreRPS: ", newScoreRPS, " TotalRPS: ", totalScoreRPS)
 		}
 	}
+	log.Println("Total Strategy score for me when second column is Lose Draw Win: ", totalScoreLDW)
+	log.Println("Total Strategy score for me when second column is Rock Paper Scissor: ", totalScoreRPS)
+
 }
 
-func calculateScoreForStrategy(string strategy) int {
+func calculateScoreForStrategyWhereSecondColumnIsRPS(strategy string, scoreByStrategy map[string]int) {
 	str := strings.Split(strategy, " ")
-	log.Println("Opponent Played: ", str[0], " You should play: ", str[1])
-	
-	// Draw condition
-	if str[0] == str[1] { 
-		scoreByStrategy[strategy] = 3
-		return 3
+	// log.Println("Opponent Played: ", str[0], " You should play: ", str[1])
+
+	// Draw conditions
+	if str[0] == "A" && str[1] == "X" {
+		scoreByStrategy[strategy] = 4
+	}
+
+	if str[0] == "B" && str[1] == "Y" {
+		scoreByStrategy[strategy] = 5
+	}
+
+	if str[0] == "C" && str[1] == "Z" {
+		scoreByStrategy[strategy] = 6
 	}
 
 	// Loosing conditions
 	if str[0] == "A" && str[1] == "Z" {
 		scoreByStrategy[strategy] = 3
-		return 3
 	}
 
 	if str[0] == "B" && str[1] == "X" {
 		scoreByStrategy[strategy] = 1
-		return 1
 	}
 
 	if str[0] == "C" && str[1] == "Y" {
 		scoreByStrategy[strategy] = 2
-		return 2
 	}
 
 	// Winning conditions
 	if str[0] == "A" && str[1] == "Y" {
 		scoreByStrategy[strategy] = 8
-		return 8
 	}
 
 	if str[0] == "B" && str[1] == "Z" {
 		scoreByStrategy[strategy] = 9
-		return 9
 	}
 
 	if str[0] == "C" && str[1] == "X" {
 		scoreByStrategy[strategy] = 7
-		return 7
 	}
-	
-	log.Println("Invalid strategy")
-	return
+
+	//log.Println("Score is: ", scoreByStrategy[strategy])
+}
+
+func calculateScoreForStrategyWhereSecondColumnIsLDW(strategy string, scoreByStrategy map[string]int) {
+	str := strings.Split(strategy, " ")
+	// log.Println("Opponent Played: ", str[0], " You should play: ", str[1])
+
+	// Draw conditions
+	if str[0] == "A" && str[1] == "Y" {
+		scoreByStrategy[strategy] = 4
+	}
+
+	if str[0] == "B" && str[1] == "Y" {
+		scoreByStrategy[strategy] = 5
+	}
+
+	if str[0] == "C" && str[1] == "Y" {
+		scoreByStrategy[strategy] = 6
+	}
+
+	// Loosing conditions
+	if str[0] == "A" && str[1] == "X" {
+		scoreByStrategy[strategy] = 3
+	}
+
+	if str[0] == "B" && str[1] == "X" {
+		scoreByStrategy[strategy] = 1
+	}
+
+	if str[0] == "C" && str[1] == "X" {
+		scoreByStrategy[strategy] = 2
+	}
+
+	// Winning conditions
+	if str[0] == "A" && str[1] == "Z" {
+		scoreByStrategy[strategy] = 8
+	}
+
+	if str[0] == "B" && str[1] == "Z" {
+		scoreByStrategy[strategy] = 9
+	}
+
+	if str[0] == "C" && str[1] == "Z" {
+		scoreByStrategy[strategy] = 7
+	}
+
+	//log.Println("Score is: ", scoreByStrategy[strategy])
 }
