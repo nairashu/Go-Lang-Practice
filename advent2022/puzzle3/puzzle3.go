@@ -2,6 +2,7 @@ package puzzle3
 
 import (
 	"bufio"
+	"errors"
 	"log"
 	"os"
 )
@@ -91,6 +92,77 @@ func RunPuzzle3() {
 
 	log.Println("Total Priority is: ", totalPriority)
 }
+
+func RunPuzzle3Part2() {
+
+	// Read the Input File
+	f, err := os.Open("./puzzle3/Input2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Remember to close the file at the end of the program
+	defer f.Close()
+
+	// Assign the scanner to read the file line by line
+	scanLine := bufio.NewScanner(f)
+	var ruckSackInputLines []string
+
+	for scanLine.Scan() {
+		rackSackInputLine := scanLine.Text()
+		ruckSackInputLines = append(ruckSackInputLines, rackSackInputLine)
+	}
+
+	totalSum := 0
+	for i := 0; i < len(ruckSackInputLines); i = i + 3 {
+		badgeItem, err := identifyCommonChar(ruckSackInputLines[i], ruckSackInputLines[i+1], ruckSackInputLines[i+2])
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			badgeItemPriority := calculatePriorityTotalPerRackSack([]rune{badgeItem})
+			totalSum = totalSum + badgeItemPriority
+		}
+	}
+
+	log.Println("Total Sum is: ", totalSum)
+}
+
+func identifyCommonChar(s1, s2, s3 string) (rune, error) {
+	log.Println(s1, s2, s3)
+	str1 := []rune(s1)
+	str2 := []rune(s2)
+	str3 := []rune(s3)
+
+	// len1 := sortRuneString(str1).Len()
+	// len2 := sortRuneString(str2).Len()
+	// len3 := sortRuneString(str3).Len()
+	// log.Println(len1, len2, len3)
+
+	// maxLen := math.Max(float64(len1), float64(len2))
+	// maxLen = math.Max(maxLen, float64(len3))
+
+	for i := 0; i < len(str1); i++ {
+		if SliceContains(str2, str1[i]) && SliceContains(str3, str1[i]) {
+			return str1[i], nil
+		}
+	}
+
+	return rune('$'), errors.New("No common char found in ruckSack")
+}
+
+// type sortRuneString []rune
+
+// func (s sortRuneString) Swap(i, j int) {
+// 	s[i], s[j] = s[j], s[i]
+// }
+
+// func (s sortRuneString) Less(i, j int) bool {
+// 	return s[i] < s[j]
+// }
+
+// func (s sortRuneString) Len() int {
+// 	return len(s)
+// }
 
 func calculatePriorityTotalPerRackSack(misplacedItems []rune) int {
 	total := 0

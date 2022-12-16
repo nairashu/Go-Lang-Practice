@@ -12,5 +12,5 @@ func main() {
 	fmt.Println("Hello Advent 2022")
 	// puzzle1.RunPuzzle1()
 	// puzzle2.RunPuzzle2()
-	puzzle3.RunPuzzle3()
+	puzzle3.RunPuzzle3Part2()
 }
