@@ -11,7 +11,7 @@ import (
 )
 
 func RunPuzzle5() {
-	f, err := os.Open("./puzzle5/Test1.txt")
+	f, err := os.Open("./puzzle5/Input1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -47,7 +47,8 @@ func RunPuzzle5() {
 		crateCount, _ := strconv.Atoi(moves[1])
 		srcStack, _ := strconv.Atoi(moves[3])
 		dstStack, _ := strconv.Atoi(moves[5])
-		stacksOfCrate = performAction(stacksOfCrate, crateCount, srcStack-1, dstStack-1)
+		//stacksOfCrate = performAction9000(stacksOfCrate, crateCount, srcStack-1, dstStack-1)
+		stacksOfCrate = performAction9001(stacksOfCrate, crateCount, srcStack-1, dstStack-1)
 	}
 	topOfStacks := getTopOfStacks(stacksOfCrate)
 	log.Println(topOfStacks)
@@ -56,11 +57,17 @@ func RunPuzzle5() {
 func reverseStacks(stacksOfCrate []stack.Stack) []stack.Stack {
 	fixedCrateStack := make([]stack.Stack, 0)
 	for i := 0; i < len(stacksOfCrate); i++ {
-		fixedCrateStack = append(stacksOfCrate, *stack.New())
+		contents := make([]string, 0)
+		fixedCrateStack = append(fixedCrateStack, *stack.New())
+		size := stacksOfCrate[i].Len()
 
-		for j := 0; j < stacksOfCrate[i].Len(); j++ {
+		for j := 0; j < size; j++ {
 			item := stacksOfCrate[i].Pop().(string)
-			fixedCrateStack[i].Push(item)
+			contents = append(contents, item)
+		}
+
+		for k := 0; k < len(contents); k++ {
+			fixedCrateStack[i].Push(contents[k])
 		}
 	}
 	return fixedCrateStack
@@ -80,10 +87,22 @@ func getTopOfStacks(stacksOfCrate []stack.Stack) string {
 	return strings.TrimSpace(builder.String())
 }
 
-func performAction(stacksOfCrate []stack.Stack, crateCount, srcStack, dstStack int) []stack.Stack {
+func performAction9000(stacksOfCrate []stack.Stack, crateCount, srcStack, dstStack int) []stack.Stack {
 	for i := 0; i < crateCount; i++ {
 		crate := stacksOfCrate[srcStack].Pop()
 		stacksOfCrate[dstStack].Push(crate)
+	}
+	return stacksOfCrate
+}
+
+func performAction9001(stacksOfCrate []stack.Stack, crateCount, srcStack, dstStack int) []stack.Stack {
+	crates := make([]string, 0)
+	for i := 0; i < crateCount; i++ {
+		crates = append(crates, stacksOfCrate[srcStack].Pop().(string))
+	}
+
+	for j := len(crates) - 1; j >= 0; j-- {
+		stacksOfCrate[dstStack].Push(crates[j])
 	}
 	return stacksOfCrate
 }
@@ -103,9 +122,9 @@ func updateStacksWithCrateStrings(stacksOfCrate []stack.Stack, crateStrings []st
 
 func getCrateStrings(scanLine string) []string {
 	stackDetails := []rune(scanLine)
-	crates := make([]string, len(stackDetails)/3)
+	crates := make([]string, 0)
 	for i := 0; i < len(stackDetails); i = i + 4 {
-		crates[i/3] = string([]rune{stackDetails[i], stackDetails[i+1], stackDetails[i+2]})
+		crates = append(crates, string([]rune{stackDetails[i], stackDetails[i+1], stackDetails[i+2]}))
 	}
 	return crates
 }
