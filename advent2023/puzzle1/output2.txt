@@ -1,0 +1,3 @@
+Hello Advent 2023
+Part 1: 55712
+Part 2: 55413

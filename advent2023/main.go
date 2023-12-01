@@ -13,7 +13,9 @@ import (
 
 func main() {
 	fmt.Println("Hello Advent 2023")
-	puzzle1.RunPuzzle1()
+	//puzzle1.RunPuzzle1()
+	// puzzle1.RunPuzzle2()
+	puzzle1.RunSolution2()
 	// puzzle2.RunPuzzle2()
 	// puzzle3.RunPuzzle3()
 	// puzzle3.RunPuzzle3Part2()
