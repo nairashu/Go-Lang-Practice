@@ -5,7 +5,8 @@ import (
 
 	//"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle1"
 	// "github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle2"
-	"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle3"
+	//"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle3"
+	"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle4"
 )
 
 func main() {
@@ -15,9 +16,9 @@ func main() {
 	// puzzle2.RunProblem1()
 	// puzzle2.RunPuzzle2Solution2()
 	// puzzle2.RunPuzzle2()
-	puzzle3.RunPuzzle3Solution1()
+	//puzzle3.RunPuzzle3Solution1()
 	// puzzle3.RunPuzzle3Part2()
-	// puzzle4.RunPuzzle4()
+	puzzle4.RunPuzzle4Solution1()
 	// puzzle5.RunPuzzle5()
 	// puzzle6.RunPuzzle6()
 }
