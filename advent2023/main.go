@@ -3,10 +3,7 @@ package main
 import (
 	"fmt"
 
-	//"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle1"
-	// "github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle2"
-	//"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle3"
-	"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle4"
+	"github.com/nairashu/Go-Lang-Practice/adevent2023/puzzle5"
 )
 
 func main() {
@@ -18,7 +15,8 @@ func main() {
 	// puzzle2.RunPuzzle2()
 	//puzzle3.RunPuzzle3Solution1()
 	// puzzle3.RunPuzzle3Part2()
-	puzzle4.RunPuzzle4Solution1()
-	// puzzle5.RunPuzzle5()
+	//puzzle4.RunPuzzle4Solution1()
+	// puzzle5.RunPuzzle5Solution1()
+	puzzle5.RunPuzzle5Solution2()
 	// puzzle6.RunPuzzle6()
 }
