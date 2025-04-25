@@ -3,13 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/nairashu/Go-Lang-Practice/helloworld"
-	"github.com/nairashu/Go-Lang-Practice/loops"
+	"github.com/nairashu/Go-Lang-Practice/leetcode"
 )
 
 func main() {
 	fmt.Println("Hello World")
-	helloworld.HelloWorld()
-	loops.RunLoops()
-
+	leetcode.RunLeetCodeProblems()
 }
